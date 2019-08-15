@@ -11,7 +11,7 @@ import (
 	"io"
 )
 
-func decrypt(key []byte, cryptoText string) string {
+func Decrypt(key []byte, cryptoText string) string {
 	ciphertext, _ := base64.URLEncoding.DecodeString(cryptoText)
 
 	block, err := aes.NewCipher(key)
@@ -35,7 +35,7 @@ func decrypt(key []byte, cryptoText string) string {
 	return fmt.Sprintf("%s", ciphertext)
 }
 
-func encrypt(key []byte, text string) string {
+func Encrypt(key []byte, text string) string {
 	// key := []byte(keyText)
 	plaintext := []byte(text)
 
@@ -67,7 +67,7 @@ func randomHex(n int) (string, error) {
 	return hex.EncodeToString(bytes), nil
 }
 
-func generateSid() (string, error) {
+func GenerateSid() (string, error) {
 	val, err := randomHex(20)
 	return val, err
 }
